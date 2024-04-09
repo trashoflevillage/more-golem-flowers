@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "more-golem-flowers",
+	"version": "${version}",
+	"name": "More Golem Flowers",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/more-golem-flowers/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowers"
+		],
+		"client": [
+			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersClient"
+		],
+		"fabric-datagen": [
+			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersDataGenerator"
+		]
+	},
+	"mixins": [
+		"more-golem-flowers.mixins.json",
+		{
+			"config": "more-golem-flowers.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.9",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
