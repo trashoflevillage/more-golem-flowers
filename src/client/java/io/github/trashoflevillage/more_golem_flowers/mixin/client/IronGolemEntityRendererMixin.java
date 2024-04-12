@@ -1,6 +1,7 @@
 package io.github.trashoflevillage.more_golem_flowers.mixin.client;
 
 import io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersResource;
+import io.github.trashoflevillage.more_golem_flowers.mixin.IronGolemEntityMixin;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -18,6 +19,7 @@ public class IronGolemEntityRendererMixin {
         entity.writeNbt(nbt);
 
         String flowerType = nbt.getString("flowerType");
+
         if (!MoreGolemFlowersResource.golemTextureIdentifiers.containsKey(flowerType)) {
             return;
         }

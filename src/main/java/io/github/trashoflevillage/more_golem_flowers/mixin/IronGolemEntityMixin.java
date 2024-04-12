@@ -29,7 +29,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(IronGolemEntity.class)
 public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable {
-    private String flowerType;
+    //private String flowerType;
+    private static final TrackedData<String> FLOWER_TRACKER = DataTracker.registerData(IronGolemEntity.class, TrackedDataHandlerRegistry.STRING);
 
     protected IronGolemEntityMixin(EntityType<? extends GolemEntity> entityType, World world) {
         super(entityType, world);
@@ -38,28 +39,33 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        flowerType = findFlowerType();
+        setFlowerType(findFlowerType());
         return entityData;
+    }
+
+    @Inject(method = "initDataTracker", at = @At("HEAD"))
+    public void initDataTracker (CallbackInfo ci) {
+        getDataTracker().startTracking(FLOWER_TRACKER, "");
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo info) {
+        String flowerType = getFlowerType();
         if (flowerType != null && !flowerType.equals("")) nbt.putString("flowerType", getFlowerType());
     }
 
     @Inject(at = @At("HEAD"), method = "readCustomDataFromNbt")
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo info) {
-        if (flowerType == null || flowerType.equals("")) setFlowerType(findFlowerType());
         if (!nbt.contains("flowerType")) setFlowerType(findFlowerType());
         else setFlowerType(nbt.getString("flowerType"));
     }
 
     public void setFlowerType(String type) {
-        flowerType = type;
+        getDataTracker().set(FLOWER_TRACKER, type);
     }
 
     public String getFlowerType() {
-        return flowerType;
+        return getDataTracker().get(FLOWER_TRACKER);
     }
 
     private String findFlowerType() {
