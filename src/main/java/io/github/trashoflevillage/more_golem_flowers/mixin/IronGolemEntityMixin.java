@@ -23,13 +23,15 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(IronGolemEntity.class)
 public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable {
-    //private String flowerType;
+    @Shadow public abstract boolean isPlayerCreated();
+
     private static final TrackedData<String> FLOWER_TRACKER = DataTracker.registerData(IronGolemEntity.class, TrackedDataHandlerRegistry.STRING);
 
     protected IronGolemEntityMixin(EntityType<? extends GolemEntity> entityType, World world) {
@@ -39,13 +41,24 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     @Nullable
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        setFlowerType(findFlowerType());
+        initModData();
         return entityData;
+    }
+
+    private void initModData() {
+        setFlowerType(findFlowerType());
     }
 
     @Inject(method = "initDataTracker", at = @At("HEAD"))
     public void initDataTracker (CallbackInfo ci) {
         getDataTracker().startTracking(FLOWER_TRACKER, "");
+    }
+
+    @Inject(method = "tickMovement", at = @At("HEAD"))
+    public void tick(CallbackInfo ci) {
+        if (getFlowerType().equals("")) {
+            setFlowerType(findFlowerType());
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
@@ -88,5 +101,10 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
 
     private boolean biomeHasTag(RegistryEntry<Biome> biome, TagKey<Biome> tag) {
         return biome.isIn(tag);
+    }
+
+    @Inject(at = @At("HEAD"), method = "tickMovement")
+    private void initPlayerCreated(CallbackInfo ci) {
+        if (getFlowerType().equals("")) initModData();
     }
 }
