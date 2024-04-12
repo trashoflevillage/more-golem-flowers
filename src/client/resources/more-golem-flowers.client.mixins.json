@@ -3,7 +3,7 @@
 	"package": "io.github.trashoflevillage.more_golem_flowers.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-		"ExampleClientMixin"
+		"IronGolemEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
