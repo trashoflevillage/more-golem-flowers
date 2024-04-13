@@ -1,4 +1,4 @@
-package io.github.trashoflevillage.more_golem_flowers.mixin;
+package io.github.trashoflevillage.biome_golems.mixin;
 
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -12,6 +12,7 @@ import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.registry.tag.TagKey;
@@ -46,7 +47,7 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     }
 
     private void initModData() {
-        setFlowerType(findFlowerType());
+        setGolemVariant(findGolemVariant());
     }
 
     @Inject(method = "initDataTracker", at = @At("HEAD"))
@@ -56,47 +57,50 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
 
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        if (getFlowerType().equals("")) {
-            setFlowerType(findFlowerType());
+        if (getGolemVariant().equals("")) {
+            setGolemVariant(findGolemVariant());
         }
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo info) {
-        String flowerType = getFlowerType();
-        if (flowerType != null && !flowerType.equals("")) nbt.putString("flowerType", getFlowerType());
+        String golemVariant = getGolemVariant();
+        if (golemVariant != null && !golemVariant.equals("")) nbt.putString("golemVariant", getGolemVariant());
     }
 
     @Inject(at = @At("HEAD"), method = "readCustomDataFromNbt")
     public void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo info) {
-        if (!nbt.contains("flowerType")) setFlowerType(findFlowerType());
-        else setFlowerType(nbt.getString("flowerType"));
+        if (!nbt.contains("golemVariant")) setGolemVariant(findGolemVariant());
+        else setGolemVariant(nbt.getString("golemVariant"));
     }
 
-    public void setFlowerType(String type) {
+    public void setGolemVariant(String type) {
         getDataTracker().set(FLOWER_TRACKER, type);
     }
 
-    public String getFlowerType() {
+    public String getGolemVariant() {
         return getDataTracker().get(FLOWER_TRACKER);
     }
 
-    private String findFlowerType() {
+    private String findGolemVariant() {
         World world = getWorld();
         RegistryEntry<Biome> biome = world.getBiome(getBlockPos());
 
-        if (biomeEquals(biome, BiomeKeys.SWAMP)) return "blue_orchid";
+        if (biomeEquals(biome, BiomeKeys.SWAMP) || biomeEquals(biome, BiomeKeys.MANGROVE_SWAMP)) return "blue_orchid";
         if (biomeHasTag(biome, BiomeTags.IS_TAIGA)) return "dandelion";
         if (biomeEquals(biome, BiomeKeys.MEADOW)) return "allium";
-        if (biomeEquals(biome, BiomeKeys.DESERT)) return "lily_of_the_valley";
-        if (biomeHasTag(biome, BiomeTags.IS_JUNGLE)) return "pink_tulip";
+        if (biomeEquals(biome, BiomeKeys.DESERT)) return "pink_tulip";
+        if (biomeHasTag(biome, BiomeTags.SPAWNS_SNOW_FOXES)) return "white_tulip";
+        if (biomeHasTag(biome, BiomeTags.IS_JUNGLE)) return "vine";
         if (biomeHasTag(biome, BiomeTags.IS_SAVANNA)) return "orange_tulip";
         if (biomeHasTag(biome, BiomeTags.SPAWNS_SNOW_FOXES)) return "cornflower";
+        if (biomeEquals(biome, BiomeKeys.SUNFLOWER_PLAINS)) return "sunflower";
         return "poppy";
     }
 
     private boolean biomeEquals(RegistryEntry<Biome> biome, RegistryKey<Biome> biome2) {
-        return biome.getKey().equals(biome2);
+        return biome.value().equals(getWorld().getRegistryManager().get(RegistryKeys.BIOME).get(biome2));
+
     }
 
     private boolean biomeHasTag(RegistryEntry<Biome> biome, TagKey<Biome> tag) {
@@ -105,6 +109,6 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
 
     @Inject(at = @At("HEAD"), method = "tickMovement")
     private void initPlayerCreated(CallbackInfo ci) {
-        if (getFlowerType().equals("")) initModData();
+        if (getGolemVariant().equals("")) initModData();
     }
 }

@@ -24,7 +24,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"dandelion\"}"
+                "nbt": "{\"golemVariant\":\"dandelion\"}"
               }
             }
           ]
@@ -48,7 +48,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"pink_tulip\"}"
+                "nbt": "{\"golemVariant\":\"pink_tulip\"}"
               }
             }
           ]
@@ -72,7 +72,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"allium\"}"
+                "nbt": "{\"golemVariant\":\"allium\"}"
               }
             }
           ]
@@ -96,7 +96,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"lily_of_the_valley\"}"
+                "nbt": "{\"golemVariant\":\"lily_of_the_valley\"}"
               }
             }
           ]
@@ -120,7 +120,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"blue_orchid\"}"
+                "nbt": "{\"golemVariant\":\"blue_orchid\"}"
               }
             }
           ]
@@ -144,7 +144,79 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"cornflower\"}"
+                "nbt": "{\"golemVariant\":\"cornflower\"}"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:vine",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 2
+              },
+              "add": false
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{\"golemVariant\":\"vine\"}"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:white_tulip",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 2
+              },
+              "add": false
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{\"golemVariant\":\"white_tulip\"}"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:sunflower",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 0,
+                "max": 2
+              },
+              "add": false
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{\"golemVariant\":\"sunflower\"}"
               }
             }
           ]
@@ -168,7 +240,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"orange_tulip\"}"
+                "nbt": "{\"golemVariant\":\"orange_tulip\"}"
               }
             }
           ]
@@ -192,7 +264,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"flowerType\":\"poppy\"}"
+                "nbt": "{\"golemVariant\":\"poppy\"}"
               }
             }
           ]

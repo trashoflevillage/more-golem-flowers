@@ -22,7 +22,7 @@ loom {
     splitEnvironmentSourceSets()
 
 	mods {
-		"more-golem-flowers" {
+		"biome-golems" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

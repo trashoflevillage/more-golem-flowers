@@ -1,7 +1,7 @@
-package io.github.trashoflevillage.more_golem_flowers.mixin.client;
+package io.github.trashoflevillage.biome_golems.mixin.client;
 
-import io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersResource;
-import io.github.trashoflevillage.more_golem_flowers.mixin.IronGolemEntityMixin;
+import io.github.trashoflevillage.biome_golems.BiomeGolemsResource;
+import io.github.trashoflevillage.biome_golems.mixin.IronGolemEntityMixin;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -18,11 +18,11 @@ public class IronGolemEntityRendererMixin {
         NbtCompound nbt = new NbtCompound();
         entity.writeNbt(nbt);
 
-        String flowerType = nbt.getString("flowerType");
+        String golemVariant = nbt.getString("golemVariant");
 
-        if (!MoreGolemFlowersResource.golemTextureIdentifiers.containsKey(flowerType)) {
+        if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariant)) {
             return;
         }
-        cir.setReturnValue(MoreGolemFlowersResource.golemTextureIdentifiers.get(flowerType));
+        cir.setReturnValue(BiomeGolemsResource.golemTextureIdentifiers.get(golemVariant));
     }
 }

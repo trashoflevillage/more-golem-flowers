@@ -1,4 +1,4 @@
-package io.github.trashoflevillage.more_golem_flowers;
+package io.github.trashoflevillage.biome_golems;
 
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.client.MinecraftClient;
@@ -9,12 +9,12 @@ import net.minecraft.util.Identifier;
 
 import java.util.HashMap;
 
-public class MoreGolemFlowersResource implements SimpleSynchronousResourceReloadListener {
+public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListener {
     public static HashMap<String, Identifier> golemTextureIdentifiers = new HashMap<>();
 
     @Override
     public Identifier getFabricId() {
-        return new Identifier(MoreGolemFlowers.MOD_ID, "more_golem_flowers");
+        return new Identifier(BiomeGolems.MOD_ID, "biome_golems");
     }
 
     @Override
@@ -26,11 +26,14 @@ public class MoreGolemFlowersResource implements SimpleSynchronousResourceReload
                 "lily_of_the_valley",
                 "orange_tulip",
                 "pink_tulip",
+                "white_tulip",
+                "vine",
+                "sunflower",
                 "poppy"
         };
         TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
         for (String i : textures) {
-            Identifier id = new Identifier("more-golem-flowers", "textures/entity/iron_golem/" + i + ".png");
+            Identifier id = new Identifier("biome-golems", "textures/entity/iron_golem/" + i + ".png");
             ResourceTexture texture = new ResourceTexture(id);
             textureManager.registerTexture(id, texture);
             golemTextureIdentifiers.put(i, id);

@@ -1,17 +1,17 @@
-package io.github.trashoflevillage.more_golem_flowers;
+package io.github.trashoflevillage.biome_golems;
 
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MoreGolemFlowers implements ModInitializer {
-	public static final String MOD_ID = "more_golem_flowers";
+public class BiomeGolems implements ModInitializer {
+	public static final String MOD_ID = "biome_golems";
 
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
-    public static final Logger LOGGER = LoggerFactory.getLogger("more-golem-flowers");
+    public static final Logger LOGGER = LoggerFactory.getLogger("biome-golems");
 
 	@Override
 	public void onInitialize() {

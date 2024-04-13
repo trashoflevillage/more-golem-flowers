@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "more-golem-flowers",
+	"id": "biome-golems",
 	"version": "${version}",
-	"name": "More Golem Flowers",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Biome Golems",
+	"description": "Makes Iron Golems have unique foliage depending on biome type.",
 	"authors": [
 		"Me!"
 	],
@@ -12,23 +12,23 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/more-golem-flowers/icon.png",
+	"icon": "assets/biome-golems/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowers"
+			"io.github.trashoflevillage.biome_golems.BiomeGolems"
 		],
 		"client": [
-			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersClient"
+			"io.github.trashoflevillage.biome_golems.BiomeGolemsClient"
 		],
 		"fabric-datagen": [
-			"io.github.trashoflevillage.more_golem_flowers.MoreGolemFlowersDataGenerator"
+			"io.github.trashoflevillage.biome_golems.BiomeGolemsDataGenerator"
 		]
 	},
 	"mixins": [
-		"more-golem-flowers.mixins.json",
+		"biome-golems.mixins.json",
 		{
-			"config": "more-golem-flowers.client.mixins.json",
+			"config": "biome-golems.client.mixins.json",
 			"environment": "client"
 		}
 	],
