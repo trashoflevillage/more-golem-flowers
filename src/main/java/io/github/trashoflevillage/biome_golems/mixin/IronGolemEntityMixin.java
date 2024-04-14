@@ -93,7 +93,6 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
         if (biomeHasTag(biome, BiomeTags.SPAWNS_SNOW_FOXES)) return "white_tulip";
         if (biomeHasTag(biome, BiomeTags.IS_JUNGLE)) return "vine";
         if (biomeHasTag(biome, BiomeTags.IS_SAVANNA)) return "orange_tulip";
-        if (biomeHasTag(biome, BiomeTags.SPAWNS_SNOW_FOXES)) return "cornflower";
         if (biomeEquals(biome, BiomeKeys.SUNFLOWER_PLAINS)) return "sunflower";
         return "poppy";
     }
