@@ -29,7 +29,8 @@ public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListe
                 "white_tulip",
                 "vine",
                 "sunflower",
-                "poppy"
+                "poppy",
+                "armstrong"
         };
         TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
         for (String i : textures) {

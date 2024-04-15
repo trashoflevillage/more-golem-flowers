@@ -19,6 +19,10 @@ public class IronGolemEntityRendererMixin {
         entity.writeNbt(nbt);
 
         String golemVariant = nbt.getString("golemVariant");
+        String customName = nbt.getString("CustomName");
+
+        if (customName.equalsIgnoreCase("\"armstrong\""))
+            golemVariant = "armstrong";
 
         if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariant)) {
             return;
