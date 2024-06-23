@@ -14,7 +14,7 @@ public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListe
 
     @Override
     public Identifier getFabricId() {
-        return new Identifier(BiomeGolems.MOD_ID, "biome_golems");
+        return Identifier.of(BiomeGolems.MOD_ID, "biome_golems");
     }
 
     @Override
@@ -34,7 +34,7 @@ public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListe
         };
         TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
         for (String i : textures) {
-            Identifier id = new Identifier("biome-golems", "textures/entity/iron_golem/" + i + ".png");
+            Identifier id = Identifier.of("biome-golems", "textures/entity/iron_golem/" + i + ".png");
             ResourceTexture texture = new ResourceTexture(id);
             textureManager.registerTexture(id, texture);
             golemTextureIdentifiers.put(i, id);

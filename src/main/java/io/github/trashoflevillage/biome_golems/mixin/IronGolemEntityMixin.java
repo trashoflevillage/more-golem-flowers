@@ -2,6 +2,7 @@ package io.github.trashoflevillage.biome_golems.mixin;
 
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -31,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(IronGolemEntity.class)
 public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable {
-    @Shadow public abstract boolean isPlayerCreated();
+    private static final String UNUSED_FLOWER_TYPE = "";
 
     private static final TrackedData<String> FLOWER_TRACKER = DataTracker.registerData(IronGolemEntity.class, TrackedDataHandlerRegistry.STRING);
 
@@ -39,25 +40,25 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
         super(entityType, world);
     }
 
-    @Nullable
-    @Override
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        initModData();
-        return entityData;
-    }
+//    @Nullable
+//    @Override
+//    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+//        initModData();
+//        return entityData;
+//    }
 
     private void initModData() {
         setGolemVariant(findGolemVariant());
     }
 
     @Inject(method = "initDataTracker", at = @At("HEAD"))
-    public void initDataTracker (CallbackInfo ci) {
-        getDataTracker().startTracking(FLOWER_TRACKER, "");
+    public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci) {
+        builder.add(FLOWER_TRACKER, UNUSED_FLOWER_TYPE);
     }
 
     @Inject(method = "tickMovement", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        if (getGolemVariant().equals("")) {
+        if (getGolemVariant().equals(UNUSED_FLOWER_TYPE)) {
             setGolemVariant(findGolemVariant());
         }
     }
@@ -65,7 +66,7 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
     public void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo info) {
         String golemVariant = getGolemVariant();
-        if (golemVariant != null && !golemVariant.equals("")) nbt.putString("golemVariant", getGolemVariant());
+        if (golemVariant != null && !golemVariant.equals(UNUSED_FLOWER_TYPE)) nbt.putString("golemVariant", getGolemVariant());
     }
 
     @Inject(at = @At("HEAD"), method = "readCustomDataFromNbt")
@@ -108,6 +109,6 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
 
     @Inject(at = @At("HEAD"), method = "tickMovement")
     private void initPlayerCreated(CallbackInfo ci) {
-        if (getGolemVariant().equals("")) initModData();
+        if (getGolemVariant().equals(UNUSED_FLOWER_TYPE)) initModData();
     }
 }
