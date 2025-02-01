@@ -12,7 +12,7 @@
 		"sources": "https://github.com/trashoflevillage/more-golem-flowers"
 	},
 	"license": "MIT",
-	"icon": "assets/biome-golems/icon.png",
+	"icon": "assets/biome_golems/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

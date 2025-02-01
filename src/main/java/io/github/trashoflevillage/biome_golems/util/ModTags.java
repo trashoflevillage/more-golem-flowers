@@ -22,6 +22,7 @@ public class ModTags {
         public static final TagKey<Biome> SPAWNS_SUNFLOWER_GOLEM = createTag("spawns_sunflower_golem");
         public static final TagKey<Biome> SPAWNS_VINE_GOLEM = createTag("spawns_vine_golem");
         public static final TagKey<Biome> SPAWNS_WHITE_TULIP_GOLEM = createTag("spawns_white_tulip_golem");
+        public static final TagKey<Biome> SPAWNS_DEAD_BUSH_GOLEM = createTag("spawns_dead_bush_golem");
 
         private static TagKey<Biome> createTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, Identifier.of(BiomeGolems.MOD_ID, name));

@@ -30,11 +30,12 @@ public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListe
                 "vine",
                 "sunflower",
                 "poppy",
-                "armstrong"
+                "armstrong",
+                "dead_bush"
         };
         TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
         for (String i : textures) {
-            Identifier id = Identifier.of("biome-golems", "textures/entity/iron_golem/" + i + ".png");
+            Identifier id = Identifier.of(BiomeGolems.MOD_ID, "textures/entity/iron_golem/" + i + ".png");
             ResourceTexture texture = new ResourceTexture(id);
             textureManager.registerTexture(id, texture);
             golemTextureIdentifiers.put(i, id);
