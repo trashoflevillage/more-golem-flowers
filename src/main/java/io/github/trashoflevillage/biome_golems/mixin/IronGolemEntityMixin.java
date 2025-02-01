@@ -1,5 +1,6 @@
 package io.github.trashoflevillage.biome_golems.mixin;
 
+import io.github.trashoflevillage.biome_golems.util.ModTags;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -26,12 +27,14 @@ import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(IronGolemEntity.class)
 public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable {
+    @Unique
     private static final String UNUSED_FLOWER_TYPE = "";
 
     private static final TrackedData<String> FLOWER_TRACKER = DataTracker.registerData(IronGolemEntity.class, TrackedDataHandlerRegistry.STRING);
@@ -75,34 +78,33 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
         else setGolemVariant(nbt.getString("golemVariant"));
     }
 
+    @Unique
     public void setGolemVariant(String type) {
         getDataTracker().set(FLOWER_TRACKER, type);
     }
 
+    @Unique
     public String getGolemVariant() {
         return getDataTracker().get(FLOWER_TRACKER);
     }
 
+    @Unique
     private String findGolemVariant() {
         World world = getWorld();
         RegistryEntry<Biome> biome = world.getBiome(getBlockPos());
 
-        if (biomeEquals(biome, BiomeKeys.SWAMP) || biomeEquals(biome, BiomeKeys.MANGROVE_SWAMP)) return "blue_orchid";
-        if (biomeHasTag(biome, BiomeTags.IS_TAIGA)) return "dandelion";
-        if (biomeEquals(biome, BiomeKeys.MEADOW)) return "allium";
-        if (biomeEquals(biome, BiomeKeys.DESERT)) return "pink_tulip";
-        if (biomeHasTag(biome, BiomeTags.SPAWNS_SNOW_FOXES)) return "white_tulip";
-        if (biomeHasTag(biome, BiomeTags.IS_JUNGLE)) return "vine";
-        if (biomeHasTag(biome, BiomeTags.IS_SAVANNA)) return "orange_tulip";
-        if (biomeEquals(biome, BiomeKeys.SUNFLOWER_PLAINS)) return "sunflower";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_BLUE_ORCHID_GOLEM)) return "blue_orchid";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_DANDELION_GOLEM)) return "dandelion";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_ALLIUM_GOLEM)) return "allium";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_PINK_TULIP_GOLEM)) return "pink_tulip";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_WHITE_TULIP_GOLEM)) return "white_tulip";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_VINE_GOLEM)) return "vine";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_ORANGE_TULIP_GOLEM)) return "orange_tulip";
+        if (biomeHasTag(biome, ModTags.Biomes.SPAWNS_SUNFLOWER_GOLEM)) return "sunflower";
         return "poppy";
     }
 
-    private boolean biomeEquals(RegistryEntry<Biome> biome, RegistryKey<Biome> biome2) {
-        return biome.value().equals(getWorld().getRegistryManager().get(RegistryKeys.BIOME).get(biome2));
-
-    }
-
+    @Unique
     private boolean biomeHasTag(RegistryEntry<Biome> biome, TagKey<Biome> tag) {
         return biome.isIn(tag);
     }

@@ -1,5 +1,6 @@
 package io.github.trashoflevillage.biome_golems;
 
+import io.github.trashoflevillage.biome_golems.util.ModTags;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
