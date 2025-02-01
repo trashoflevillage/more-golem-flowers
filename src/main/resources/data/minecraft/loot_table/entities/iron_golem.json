@@ -6,19 +6,24 @@
       "bonus_rolls": 0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:dandelion",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:dandelion",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
+          "functions": [],
           "conditions": [
             {
               "condition": "minecraft:entity_properties",
@@ -30,17 +35,35 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:pink_tulip",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:sand",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:pink_tulip",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -54,17 +77,30 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:allium",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:honeycomb",
+              "weight": 1,
+              "quality": 1,
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:allium",
+              "weight": 6,
+              "quality": 1,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -78,17 +114,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:lily_of_the_valley",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:lily_of_the_valley",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -102,17 +142,35 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:blue_orchid",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:mud",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:blue_orchid",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -126,17 +184,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:cornflower",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:cornflower",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -150,17 +212,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:vine",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:vine",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -174,17 +240,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:white_tulip",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:white_tulip",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -198,17 +268,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:sunflower",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:sunflower",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -222,17 +296,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:orange_tulip",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:orange_tulip",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [
@@ -246,17 +324,21 @@
           ]
         },
         {
-          "type": "minecraft:item",
-          "name": "minecraft:poppy",
-          "functions": [
+          "type": "minecraft:group",
+          "children": [
             {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 0,
-                "max": 2
-              },
-              "add": false
+              "type": "minecraft:item",
+              "name": "minecraft:poppy",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
             }
           ],
           "conditions": [

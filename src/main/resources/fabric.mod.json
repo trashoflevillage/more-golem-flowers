@@ -5,11 +5,11 @@
 	"name": "Biome Golems",
 	"description": "Makes Iron Golems have unique foliage depending on biome type.",
 	"authors": [
-		"Me!"
+		"trashoflevillage"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/biome-golems",
+		"sources": "https://github.com/trashoflevillage/more-golem-flowers"
 	},
 	"license": "MIT",
 	"icon": "assets/biome-golems/icon.png",
