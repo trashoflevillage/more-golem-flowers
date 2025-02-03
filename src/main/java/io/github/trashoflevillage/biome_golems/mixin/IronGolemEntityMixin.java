@@ -1,5 +1,6 @@
 package io.github.trashoflevillage.biome_golems.mixin;
 
+import io.github.trashoflevillage.biome_golems.access.IronGolemEntityMixinAccess;
 import io.github.trashoflevillage.biome_golems.util.ModTags;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -33,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(IronGolemEntity.class)
-public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable {
+public abstract class IronGolemEntityMixin extends GolemEntity implements Angerable, IronGolemEntityMixinAccess {
     @Unique
     private static final String UNUSED_FLOWER_TYPE = "";
 
