@@ -38,33 +38,21 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     @Unique
     private static final String UNUSED_FLOWER_TYPE = "";
 
+    @Unique
     private static final TrackedData<String> FLOWER_TRACKER = DataTracker.registerData(IronGolemEntity.class, TrackedDataHandlerRegistry.STRING);
 
     protected IronGolemEntityMixin(EntityType<? extends GolemEntity> entityType, World world) {
         super(entityType, world);
     }
 
-//    @Nullable
-//    @Override
-//    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-//        initModData();
-//        return entityData;
-//    }
-
-    private void initModData() {
+    @Unique
+    public void initModData() {
         setGolemVariant(findGolemVariant());
     }
 
     @Inject(method = "initDataTracker", at = @At("HEAD"))
     public void initDataTracker(DataTracker.Builder builder, CallbackInfo ci) {
         builder.add(FLOWER_TRACKER, UNUSED_FLOWER_TYPE);
-    }
-
-    @Inject(method = "tickMovement", at = @At("HEAD"))
-    public void tick(CallbackInfo ci) {
-        if (getGolemVariant().equals(UNUSED_FLOWER_TYPE)) {
-            setGolemVariant(findGolemVariant());
-        }
     }
 
     @Inject(at = @At("HEAD"), method = "writeCustomDataToNbt")
@@ -109,10 +97,5 @@ public abstract class IronGolemEntityMixin extends GolemEntity implements Angera
     @Unique
     private boolean biomeHasTag(RegistryEntry<Biome> biome, TagKey<Biome> tag) {
         return biome.isIn(tag);
-    }
-
-    @Inject(at = @At("HEAD"), method = "tickMovement")
-    private void initPlayerCreated(CallbackInfo ci) {
-        if (getGolemVariant().equals(UNUSED_FLOWER_TYPE)) initModData();
     }
 }

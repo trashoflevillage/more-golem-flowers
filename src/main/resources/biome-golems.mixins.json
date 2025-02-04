@@ -3,7 +3,8 @@
 	"package": "io.github.trashoflevillage.biome_golems.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"IronGolemEntityMixin"
+		"IronGolemEntityMixin",
+		"MobEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
