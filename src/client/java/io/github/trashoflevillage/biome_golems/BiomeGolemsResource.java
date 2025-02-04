@@ -31,7 +31,9 @@ public class BiomeGolemsResource implements SimpleSynchronousResourceReloadListe
                 "sunflower",
                 "poppy",
                 "armstrong",
-                "dead_bush"
+                "dead_bush",
+                "closed_eyeblossom",
+                "open_eyeblossom"
         };
         TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
         for (String i : textures) {

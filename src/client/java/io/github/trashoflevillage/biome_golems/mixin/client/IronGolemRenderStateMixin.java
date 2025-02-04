@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class IronGolemRenderStateMixin implements IronGolemRenderStateMixinAccess {
     @Unique
     String golemVariant = "dandelion";
+    long time = 0;
 
     @Override
     public String getGolemVariant() {
@@ -24,5 +25,14 @@ public class IronGolemRenderStateMixin implements IronGolemRenderStateMixinAcces
 
     public void setGolemVariant(String golemVariant) {
         this.golemVariant = golemVariant;
+    }
+
+    @Override
+    public boolean isNight() {
+        return time > 13000;
+    }
+
+    public void setTime(long val) {
+        time = val;
     }
 }

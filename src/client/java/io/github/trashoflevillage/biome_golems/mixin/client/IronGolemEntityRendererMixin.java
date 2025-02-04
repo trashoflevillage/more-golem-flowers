@@ -3,11 +3,9 @@ package io.github.trashoflevillage.biome_golems.mixin.client;
 import io.github.trashoflevillage.biome_golems.BiomeGolemsResource;
 import io.github.trashoflevillage.biome_golems.access.IronGolemEntityMixinAccess;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
-import io.github.trashoflevillage.biome_golems.mixin.IronGolemEntityMixin;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
 import net.minecraft.client.render.entity.state.IronGolemEntityRenderState;
 import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +21,9 @@ public class IronGolemEntityRendererMixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    public void getTexture (IronGolemEntityRenderState renderState, CallbackInfoReturnable<Identifier> cir) {
-        String golemVariant = ((IronGolemRenderStateMixinAccess)renderState).getGolemVariant();
+    public void getTexture(IronGolemEntityRenderState renderState, CallbackInfoReturnable<Identifier> cir) {
+        IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)renderState);
+        String golemVariant = customState.getGolemVariant();
         Text customNameText = renderState.customName;
         String customName = "";
         if (customNameText != null) {
@@ -34,6 +33,14 @@ public class IronGolemEntityRendererMixin {
 
         if (customName.equalsIgnoreCase("armstrong")) {
             golemVariant = "armstrong";
+        }
+
+        if (golemVariant.equals("eyeblossom")) {
+            if (customState.isNight()) {
+                golemVariant = "open_eyeblossom";
+            } else {
+                golemVariant = "closed_eyeblossom";
+            }
         }
 
         if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariant)) {
@@ -47,6 +54,8 @@ public class IronGolemEntityRendererMixin {
             at = @At("TAIL")
     )
     public void updateRenderState(IronGolemEntity ironGolemEntity, IronGolemEntityRenderState ironGolemEntityRenderState, float f, CallbackInfo ci) {
-        ((IronGolemRenderStateMixinAccess)ironGolemEntityRenderState).setGolemVariant(((IronGolemEntityMixinAccess)ironGolemEntity).getGolemVariant());
+        IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)ironGolemEntityRenderState);
+        customState.setGolemVariant(((IronGolemEntityMixinAccess)ironGolemEntity).getGolemVariant());
+        customState.setTime(ironGolemEntity.getWorld().getTimeOfDay());
     }
 }
