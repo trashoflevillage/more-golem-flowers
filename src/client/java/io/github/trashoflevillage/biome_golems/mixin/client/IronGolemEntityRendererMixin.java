@@ -3,7 +3,11 @@ package io.github.trashoflevillage.biome_golems.mixin.client;
 import io.github.trashoflevillage.biome_golems.BiomeGolemsResource;
 import io.github.trashoflevillage.biome_golems.access.IronGolemEntityMixinAccess;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
+import io.github.trashoflevillage.biome_golems.entity.IronGolemPaleEyeFeatureRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.IronGolemEntityModel;
 import net.minecraft.client.render.entity.state.IronGolemEntityRenderState;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.text.Text;
@@ -15,7 +19,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(IronGolemEntityRenderer.class)
-public class IronGolemEntityRendererMixin {
+public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<IronGolemEntity, IronGolemEntityRenderState, IronGolemEntityModel> {
+    public IronGolemEntityRendererMixin(EntityRendererFactory.Context context, IronGolemEntityModel entityModel, float f) {
+        super(context, entityModel, f);
+    }
+
     @Inject(
             method = "getTexture(Lnet/minecraft/client/render/entity/state/IronGolemEntityRenderState;)Lnet/minecraft/util/Identifier;",
             at = @At("HEAD"),
@@ -57,5 +65,10 @@ public class IronGolemEntityRendererMixin {
         IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)ironGolemEntityRenderState);
         customState.setGolemVariant(((IronGolemEntityMixinAccess)ironGolemEntity).getGolemVariant());
         customState.setTime(ironGolemEntity.getWorld().getTimeOfDay());
+    }
+
+    @Inject(method = "<init>", at = @At("TAIL"))
+    public void init(EntityRendererFactory.Context context, CallbackInfo ci) {
+        this.addFeature(new IronGolemPaleEyeFeatureRenderer<>(this));
     }
 }
