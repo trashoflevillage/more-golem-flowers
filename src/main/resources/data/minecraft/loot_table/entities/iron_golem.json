@@ -406,6 +406,101 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:alternatives",
+              "name": "minecraft:closed_eyeblossom",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:open_eyeblossom",
+                  "functions": [
+                    {
+                      "function": "minecraft:set_count",
+                      "count": {
+                        "type": "minecraft:uniform",
+                        "min": 0,
+                        "max": 2
+                      }
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "condition": "minecraft:time_check",
+                      "value": {
+                        "min": 13000,
+                        "max": 24000
+                      },
+                      "period": 24000
+                    }
+                  ]
+                },
+                {
+                  "type": "minecraft:item",
+                  "name": "minecraft:closed_eyeblossom",
+                  "functions": [
+                    {
+                      "function": "minecraft:set_count",
+                      "count": {
+                        "type": "minecraft:uniform",
+                        "min": 0,
+                        "max": 2
+                      }
+                    }
+                  ],
+                  "conditions": [
+                    {
+                      "condition": "minecraft:inverted",
+                      "term": {
+                        "condition": "minecraft:time_check",
+                        "value": {
+                          "min": 13000,
+                          "max": 24000
+                        },
+                        "period": 24000
+                      }
+                    }
+                  ]
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:pale_moss_block",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 0,
+                    "max": 2
+                  }
+                }
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{\"golemVariant\":\"eyeblossom\"}"
+              }
+            }
+          ]
         }
       ]
     },
