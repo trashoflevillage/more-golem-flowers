@@ -30,7 +30,11 @@ public class IronGolemFlowerFeatureRendererMixin {
         if (customState.getGolemVariant().equals("eyeblossom")) {
             if (customState.isNight()) flower = Blocks.OPEN_EYEBLOSSOM;
             else flower = Blocks.CLOSED_EYEBLOSSOM;
-        } else flower = Registries.BLOCK.get(Identifier.ofVanilla(customState.getGolemVariant()));
+        } else if (customState.getGolemVariant().equals("vine")) {
+            flower = null;
+        } else {
+            flower = Registries.BLOCK.get(Identifier.ofVanilla(customState.getGolemVariant()));
+        }
         if (flower == null) flower = Blocks.POPPY;
         return flower.getDefaultState();
     }
