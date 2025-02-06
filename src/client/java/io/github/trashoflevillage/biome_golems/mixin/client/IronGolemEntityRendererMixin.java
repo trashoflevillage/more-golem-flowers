@@ -5,14 +5,9 @@ import io.github.trashoflevillage.biome_golems.access.IronGolemEntityMixinAccess
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
 import io.github.trashoflevillage.biome_golems.entity.IronGolemOpenEyeblossomFeatureRenderer;
 import io.github.trashoflevillage.biome_golems.entity.IronGolemPaleEyeFeatureRenderer;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.feature.EmissiveFeatureRenderer;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.IronGolemEntityModel;
 import net.minecraft.client.render.entity.state.IronGolemEntityRenderState;
 import net.minecraft.entity.passive.IronGolemEntity;
@@ -23,8 +18,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.List;
 
 @Mixin(IronGolemEntityRenderer.class)
 public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<IronGolemEntity, IronGolemEntityRenderState, IronGolemEntityModel> {
@@ -39,7 +32,7 @@ public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<Iro
     )
     public void getTexture(IronGolemEntityRenderState renderState, CallbackInfoReturnable<Identifier> cir) {
         IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)renderState);
-        String golemVariant = customState.getGolemVariant();
+        String golemVariantName = customState.getGolemVariant().toString();
         Text customNameText = renderState.customName;
         String customName = "";
         if (customNameText != null) {
@@ -48,21 +41,21 @@ public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<Iro
         }
 
         if (customName.equalsIgnoreCase("armstrong")) {
-            golemVariant = "armstrong";
+            golemVariantName = "armstrong";
         }
 
-        if (golemVariant.equals("eyeblossom")) {
+        if (golemVariantName.equals("eyeblossom")) {
             if (customState.isNight()) {
-                golemVariant = "open_eyeblossom";
+                golemVariantName = "open_eyeblossom";
             } else {
-                golemVariant = "closed_eyeblossom";
+                golemVariantName = "closed_eyeblossom";
             }
         }
 
-        if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariant)) {
+        if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariantName)) {
             return;
         }
-        cir.setReturnValue(BiomeGolemsResource.golemTextureIdentifiers.get(golemVariant));
+        cir.setReturnValue(BiomeGolemsResource.golemTextureIdentifiers.get(golemVariantName));
     }
 
     @Inject(

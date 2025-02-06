@@ -2,6 +2,7 @@ package io.github.trashoflevillage.biome_golems.entity;
 
 import io.github.trashoflevillage.biome_golems.BiomeGolems;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
+import io.github.trashoflevillage.biome_golems.util.GolemType;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -34,7 +35,7 @@ public class IronGolemPaleEyeFeatureRenderer<M extends EntityModel<IronGolemEnti
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, IronGolemEntityRenderState state, float limbAngle, float limbDistance) {
         if (!state.invisible) {
             IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)state);
-            if (customState.getGolemVariant().equals("eyeblossom")) {
+            if (customState.getGolemVariant() == GolemType.EYEBLOSSOM) {
                 float h = this.animationAlphaAdjuster.apply(state, state.age);
                 int j = ColorHelper.getArgb(MathHelper.floor(h * 255.0F), 255, 255, 255);
                 renderModel(getContextModel(), PALE_EYES, matrices, vertexConsumers, 0xF000F0, state, j);

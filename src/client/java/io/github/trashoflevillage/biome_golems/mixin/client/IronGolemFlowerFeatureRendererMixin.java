@@ -2,6 +2,7 @@ package io.github.trashoflevillage.biome_golems.mixin.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
+import io.github.trashoflevillage.biome_golems.util.GolemType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,13 +28,13 @@ public class IronGolemFlowerFeatureRendererMixin {
     public BlockState getFlowerBlockstate(BlockState original, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, IronGolemEntityRenderState ironGolemEntityRenderState, float f, float g) {
         IronGolemRenderStateMixinAccess customState = (IronGolemRenderStateMixinAccess)ironGolemEntityRenderState;
         Block flower;
-        if (customState.getGolemVariant().equals("eyeblossom")) {
+        if (customState.getGolemVariant() == GolemType.EYEBLOSSOM) {
             if (customState.isNight()) flower = Blocks.OPEN_EYEBLOSSOM;
             else flower = Blocks.CLOSED_EYEBLOSSOM;
-        } else if (customState.getGolemVariant().equals("vine")) {
+        } else if (customState.getGolemVariant() == GolemType.VINE) {
             flower = null;
         } else {
-            flower = Registries.BLOCK.get(Identifier.ofVanilla(customState.getGolemVariant()));
+            flower = Registries.BLOCK.get(Identifier.ofVanilla(customState.getGolemVariant().toString()));
         }
         if (flower == null) flower = Blocks.POPPY;
         return flower.getDefaultState();

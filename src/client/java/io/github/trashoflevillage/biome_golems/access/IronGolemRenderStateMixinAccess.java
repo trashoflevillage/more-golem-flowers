@@ -1,8 +1,10 @@
 package io.github.trashoflevillage.biome_golems.access;
 
+import io.github.trashoflevillage.biome_golems.util.GolemType;
+
 public interface IronGolemRenderStateMixinAccess {
-    String getGolemVariant();
-    void setGolemVariant(String variant);
+    GolemType getGolemVariant();
+    void setGolemVariant(GolemType variant);
     boolean isNight();
     void setTime(long val);
 }

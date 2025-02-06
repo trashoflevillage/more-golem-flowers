@@ -2,6 +2,7 @@ package io.github.trashoflevillage.biome_golems.entity;
 
 import io.github.trashoflevillage.biome_golems.BiomeGolems;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
+import io.github.trashoflevillage.biome_golems.util.GolemType;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.EmissiveFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
@@ -30,7 +31,7 @@ public class IronGolemOpenEyeblossomFeatureRenderer<M extends EntityModel<IronGo
         if (!state.invisible) {
             IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)state);
             if ((state.customName == null || !state.customName.getString().equalsIgnoreCase("armstrong"))
-                    && customState.isNight() && customState.getGolemVariant().equals("eyeblossom")) {
+                    && customState.isNight() && customState.getGolemVariant() == GolemType.EYEBLOSSOM) {
                 float h = this.animationAlphaAdjuster.apply(state, state.age);
                 int j = ColorHelper.getArgb(MathHelper.floor(h * 255.0F), 255, 255, 255);
                 renderModel(getContextModel(), EYEBLOSSOMS, matrices, vertexConsumers, 0xF000F0, state, j);
