@@ -29,7 +29,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"dandelion\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:dandelion\"}"
               }
             }
           ]
@@ -71,7 +71,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"pink_tulip\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:pink_tulip\"}"
               }
             }
           ]
@@ -108,7 +108,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"allium\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:allium\"}"
               }
             }
           ]
@@ -136,7 +136,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"lily_of_the_valley\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:lily_of_the_valley\"}"
               }
             }
           ]
@@ -178,7 +178,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"blue_orchid\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:blue_orchid\"}"
               }
             }
           ]
@@ -206,7 +206,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"cornflower\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:cornflower\"}"
               }
             }
           ]
@@ -248,7 +248,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"vine\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:vine\"}"
               }
             }
           ]
@@ -276,7 +276,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"white_tulip\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:white_tulip\"}"
               }
             }
           ]
@@ -304,7 +304,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"sunflower\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:sunflower\"}"
               }
             }
           ]
@@ -332,7 +332,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"orange_tulip\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:orange_tulip\"}"
               }
             }
           ]
@@ -360,7 +360,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"poppy\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:poppy\"}"
               }
             }
           ]
@@ -402,7 +402,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"dead_bush\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:dead_bush\"}"
               }
             }
           ]
@@ -497,7 +497,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{\"golemVariant\":\"eyeblossom\"}"
+                "nbt": "{\"golemVariant\":\"biome_golems:eyeblossom\"}"
               }
             }
           ]

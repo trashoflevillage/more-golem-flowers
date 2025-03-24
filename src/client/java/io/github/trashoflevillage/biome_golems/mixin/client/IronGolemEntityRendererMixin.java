@@ -1,10 +1,12 @@
 package io.github.trashoflevillage.biome_golems.mixin.client;
 
-import io.github.trashoflevillage.biome_golems.BiomeGolemsResource;
+import io.github.trashoflevillage.biome_golems.BiomeGolems;
 import io.github.trashoflevillage.biome_golems.access.IronGolemEntityMixinAccess;
 import io.github.trashoflevillage.biome_golems.access.IronGolemRenderStateMixinAccess;
 import io.github.trashoflevillage.biome_golems.entity.IronGolemOpenEyeblossomFeatureRenderer;
 import io.github.trashoflevillage.biome_golems.entity.IronGolemPaleEyeFeatureRenderer;
+import io.github.trashoflevillage.biome_golems.entity.IronGolemTextureRegistry;
+import io.github.trashoflevillage.biome_golems.util.GolemType;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.IronGolemEntityRenderer;
 import net.minecraft.client.render.entity.MobEntityRenderer;
@@ -32,7 +34,6 @@ public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<Iro
     )
     public void getTexture(IronGolemEntityRenderState renderState, CallbackInfoReturnable<Identifier> cir) {
         IronGolemRenderStateMixinAccess customState = ((IronGolemRenderStateMixinAccess)renderState);
-        String golemVariantName = customState.getGolemVariant().toString();
         Text customNameText = renderState.customName;
         String customName = "";
         if (customNameText != null) {
@@ -40,22 +41,14 @@ public abstract class IronGolemEntityRendererMixin extends MobEntityRenderer<Iro
             if (customName == null) customName = "";
         }
 
-        if (customName.equalsIgnoreCase("armstrong")) {
-            golemVariantName = "armstrong";
-        }
+        GolemType type = ((IronGolemRenderStateMixinAccess)renderState).getGolemVariant();
+        Identifier textureId;
+        if (customName.equalsIgnoreCase("armstrong"))
+            textureId = Identifier.of(BiomeGolems.MOD_ID, "textures/entity/iron_golem/armstrong.png");
+        else
+            textureId = IronGolemTextureRegistry.getTexture(type, renderState);
 
-        if (golemVariantName.equals("eyeblossom")) {
-            if (customState.isNight()) {
-                golemVariantName = "open_eyeblossom";
-            } else {
-                golemVariantName = "closed_eyeblossom";
-            }
-        }
-
-        if (!BiomeGolemsResource.golemTextureIdentifiers.containsKey(golemVariantName)) {
-            return;
-        }
-        cir.setReturnValue(BiomeGolemsResource.golemTextureIdentifiers.get(golemVariantName));
+        cir.setReturnValue(textureId);
     }
 
     @Inject(

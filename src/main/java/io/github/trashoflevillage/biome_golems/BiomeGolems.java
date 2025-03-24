@@ -1,5 +1,6 @@
 package io.github.trashoflevillage.biome_golems;
 
+import io.github.trashoflevillage.biome_golems.util.GolemType;
 import io.github.trashoflevillage.biome_golems.util.ModTags;
 import net.fabricmc.api.ModInitializer;
 
@@ -21,5 +22,6 @@ public class BiomeGolems implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Initializing " + MOD_ID);
+		GolemType.registerAll();
 	}
 }
