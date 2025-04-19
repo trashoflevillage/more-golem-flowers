@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "biome_golems",
+  "version": "${version}",
+  "name": "Biome Golems",
+  "description": "Makes Iron Golems have unique foliage depending on biome type.",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/biome-golems",
+    "sources": "https://github.com/trashoflevillage/more-golem-flowers"
+  },
+  "license": "MIT",
+  "icon": "assets/biome_golems/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.trashoflevillage.biomegolems.fabric.BiomeGolemsFabric"
+    ],
+    "client": [
+      "io.github.trashoflevillage.biomegolems.fabric.client.BiomeGolemsFabricClient"
+    ]
+  },
+  "mixins": [
+    "biome_golems.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "architectury": ">=15.0.3",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

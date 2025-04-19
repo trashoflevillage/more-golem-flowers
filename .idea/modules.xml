@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/biome_golems.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/biome_golems.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/biome_golems.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/biome_golems.common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/biome_golems.common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/common/biome_golems.common.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fabric/biome_golems.fabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fabric/biome_golems.fabric.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fabric/biome_golems.fabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/fabric/biome_golems.fabric.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge/biome_golems.neoforge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge/biome_golems.neoforge.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge/biome_golems.neoforge.test.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge/biome_golems.neoforge.test.iml" />
+    </modules>
+  </component>
+</project>

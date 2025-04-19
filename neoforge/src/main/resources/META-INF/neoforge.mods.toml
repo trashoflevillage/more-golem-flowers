@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "biome_golems"
+version = "${version}"
+displayName = "Biome Golems"
+authors = "trashoflevillage"
+description = '''
+Makes Iron Golems have unique foliage depending on biome type.
+'''
+#logoFile = ""
+
+[[dependencies.biome_golems]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.biome_golems]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.biome_golems]]
+modId = "architectury"
+type = "required"
+versionRange = "[15.0.3,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "biome_golems.mixins.json"
